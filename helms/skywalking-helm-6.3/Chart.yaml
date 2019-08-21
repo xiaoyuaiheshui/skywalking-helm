@@ -2,7 +2,7 @@ name: skywalking-6-3-0
 apiVersion: v1
 appVersion: 6.3.0
 description: Apache SkyWalking 分布式系统的应用程序性能监视工具，专为微服务，云原生和基于容器（Docker，K8s，Mesos）架构而设计。
-version: 0.6.7
+version: 0.6.8
 icon: http://gitlab.kpy.com/chenqing/skywalking-helm/tree/master/logo/skywalking-logo.png
 maintainers:
 - name: yusq

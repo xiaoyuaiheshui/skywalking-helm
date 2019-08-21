@@ -64,10 +64,3 @@ ui:
 nameOverride: ""
 fullnameOverride: ""
 
-sw:
-  storage: h2
-  es:
-    clusterNodes: 127.0.0.1:9200
-    nameSpace: development
-    user:
-    password:
