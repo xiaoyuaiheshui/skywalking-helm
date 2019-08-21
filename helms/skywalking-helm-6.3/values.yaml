@@ -1,7 +1,7 @@
 oap:
   name: skywalking-oap
   image:
-    repository: skywalking/oap
+    repository: apache/skywalking-oap-server
     tag: 6.3.0
     pullPolicy: IfNotPresent
   ports:
@@ -28,7 +28,7 @@ ui:
   name: skywalking-ui
   replicas: 1
   image:
-    repository: skywalking/ui
+    repository: apache/skywalking-ui
     tag: 6.3.0
     pullPolicy: IfNotPresent
   ports:
