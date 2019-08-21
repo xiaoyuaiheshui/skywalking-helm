@@ -1,0 +1,33 @@
+questions: 
+- variable: sw.storage
+  group: "Storage Configuration" 
+  default: "elastisearch"
+  description: "Choice Storage"
+  type: enum
+  required: true
+  options: 
+    - "h2"
+    - "elastisearch"
+  label: Storage Type
+  show_subquestion_if: "elastisearch"
+  subquestions:
+  - variable: sw.es.clusterNodes
+    default: "127.0.0.1:9200"
+    description: "Elastisearch cluster nodes,example: localhost:9200"
+    type: string
+    label: SW_STORAGE_ES_CLUSTER_NODES
+  - variable: sw.es.nameSpace
+    default: "development"
+    description: "Elastisearch namespace. When namespace is set, names of all indexes in ElasticSearch will use it as prefix."
+    type: string
+    label: SW_NAMESPACE
+  - variable: sw.es.user
+    default: ""
+    description: "Elastisearch user"
+    type: string
+    label: SW_ES_USER
+  - variable: sw.es.password
+    default: ""
+    description: "Elastisearch password"
+    type: string
+    label: SW_ES_PASSWORD

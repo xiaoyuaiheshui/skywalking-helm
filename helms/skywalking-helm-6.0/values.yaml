@@ -1,0 +1,73 @@
+oap:
+  name: skywalking-oap
+  image:
+    repository: skywalking/oap
+    tag: 6.0.0-GA
+    pullPolicy: IfNotPresent
+  ports:
+    grpc: 11800
+    rest: 12800
+  replicas: 1
+  service:
+    type: ClusterIP
+  env:
+    javaOpts: "-Xms256M -Xmx512M"
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+     # cpu: 100m
+     memory: 2Gi
+    requests:
+     # cpu: 100m
+     memory: 1Gi
+
+ui:
+  name: skywalking-ui
+  replicas: 1
+  image:
+    repository: skywalking/ui
+    tag: 6.0.0-GA
+    pullPolicy: IfNotPresent
+  ports:
+    page: 8080
+  ingress:
+    enabled: false
+    annotations: {}
+      # kubernetes.io/ingress.class: nginx
+      # kubernetes.io/tls-acme: "true"
+    path: /
+    hosts:
+      - chart-example.local
+    tls: []
+    #  - secretName: chart-example-tls
+    #    hosts:
+    #      - chart-example.local
+  service:
+    type: NodePort
+    port: 80
+  resources:
+    # We usually recommend not to specify default resources and to leave this as a conscious
+    # choice for the user. This also increases chances charts run on environments with little
+    # resources, such as Minikube. If you do want to specify resources, uncomment the following
+    # lines, adjust them as necessary, and remove the curly braces after 'resources:'.
+    limits:
+     # cpu: 100m
+     memory: 2Gi
+    requests:
+     # cpu: 100m
+     memory: 1Gi
+
+
+nameOverride: ""
+fullnameOverride: ""
+
+sw:
+  storage: h2
+  es:
+    clusterNodes: 127.0.0.1:9200
+    nameSpace: development
+    user:
+    password:
